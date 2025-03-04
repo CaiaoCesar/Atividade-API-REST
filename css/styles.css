@@ -1,0 +1,235 @@
+
+body{
+  padding: 1%;
+  margin: 1%;
+  border-radius: 10px;
+  background-color: darkgray;
+}
+
+header{
+  background-image: url("/images/ImgSearch.webp");
+  background-color: rgba(0, 0, 0, 0.2);
+  background-blend-mode: overlay;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  padding: 0;
+  text-align: center;
+  font-style: normal;
+  font-family: "Plaster", system-ui;
+  font-weight: 400;
+  font-size: 2rem;
+  font-style: normal;
+  height: 3rem;
+}
+
+nav ul{
+  list-style: none;
+  padding: 0;
+  display: flex; 
+  justify-content: center; 
+  flex-wrap: wrap; 
+  gap: 300px;
+}
+
+nav ul li a{ 
+  color: #ade4b5;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: orangered;
+}
+
+nav ul li a:active {
+  color: yellow;
+}
+
+a{
+  color:dodgerblue;
+}
+
+.cabecalho{
+    font-family: "Limelight", sans-serif;
+    font-weight: 1200;
+    font-style: normal;
+    font-size: 1.5rem;
+    height: 8.5rem;
+    margin: 20px;
+    background-image: url("/images/fruits.png");
+    border-radius: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-blend-mode: overlay;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#intro{
+  justify-content: center;
+  text-align: center;
+
+}
+
+.main{
+  font-family: "Racing Sans One", serif;
+  font-weight: 400;
+  font-style: normal;
+  background-image: url('../images/Background.webp');
+  border-radius: 10px;
+}
+
+#apresentation{
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+  background-blend-mode: overlay;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#textApresentation{
+  justify-content: center;
+  align-self: center;
+}
+
+.container{
+  font-family: "Racing Sans One", serif;
+  font-weight: 400;
+  font-style: normal;
+  background-image: url('../images/tableFood.png');
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.paginaFeed{
+  font-size: 1.3rem;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  color: white;
+  background-image: url("/images/QualityImg.webp");
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: overlay;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.pesquisa{
+  justify-content: center;
+  text-align: center;
+}
+
+#pesquisaDado{
+  justify-content: center;
+  text-align: center;
+}
+
+input{
+  height: 3rem;
+  width: 18rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+button{
+  height: 3rem;
+  width: 8rem;
+  border-radius: 15px;
+}
+
+#informacoesPesquisa{
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.2rem;
+}
+
+#credits{
+  position: relative;
+  font-size: 1.3rem;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: overlay;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#links{
+  color:forestgreen; 
+
+}
+
+footer{
+  font-family: "Limelight", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 10px;
+}
+
+
+.product-card {
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 16px;
+  width: 55%;
+  margin: 16px 0;
+  background-image: url("/images/fruits.png");
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: overlay;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  font-family: "Rubik Dirt", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.product-card h2 {
+  margin-top: 0;
+  color: #f7f7a1;
+}
+
+.product-card li{
+  color: black;
+}
+
+.img-produto {
+  height: 400px;
+  width: 400px;
+  padding: 8px;
+}
+
+.nutriscore-grade {
+  font-size: 1.2em;
+  color: #ff4000;
+  margin-bottom: 16px;
+}
+
+.nutriscore-details h3 {
+  margin-bottom: 8px;
+  color: #badda3;
+}
+
+.nutriscore-details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.nutriscore-details ul li {
+  background-color: #fff;
+  margin: 4px 0;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+
+#rodapeCreditos {
+  padding: 10px;
+  margin: 10px;
+}

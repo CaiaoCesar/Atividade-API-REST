@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Consumindo uma API">
+    <title>Feed</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Plaster&family=Racing+Sans+One&family=Rubik+Dirt&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <script 
+        src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js" 
+        integrity="sha512-v8+bPcpk4Sj7CKB11+gK/FnsbgQ15jTwZamnBf/xDmiQDcgOIYufBo6Acu1y30vrk8gg5su4x0CG3zfPaq5Fcg==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer">
+    </script>
+
+    <script src="js/scripts.js"></script>
+
+</head>
+<body>        
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="feed.html">Feed</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="paginaFeed">
+        <div class="pesquisa">
+            <section id="motivacao">
+                <h2>Clique aqui para Descobrir, Comparar e Escolher os Melhores Produtos!</h2>
+            </section>
+            
+            <h3>✅ Busque um elemento pelo seu Código de Barras:</h3>
+            <form id="pesquisaDado">
+                <input type="search" name="buscar" placeholder="Buscar Alimento 🍽">
+                <button type="submit">Pesquisar 🔍</button>
+            </form>
+
+            <section id="informacoesPesquisa">
+                <p>
+                    <h2>Compare a qualidade nutricional dos produtos alimentícios com o Nutri-Score!</h2>
+
+                        <h3>O que é Nutri-Score?</h3>
+                        <p>O Nutri-Score é um logotipo que indica a qualidade nutricional dos alimentos com notas que variam de A a E. Com o NutriScore, os produtos podem ser comparados de forma fácil e rápida. <br>
+                           A Open Food Facts começou a calcular o Nutri-Score em 2014 em seu aplicativo móvel e site como pioneira, quando era apenas um tópico de pesquisa, e acompanhou sua evolução, do "pontuação de 5 cores" para o "Nutri-Score" que você vê nos supermercados hoje.</p>
+
+                        <h3>Como o Nutri-Score é calculado?</h3>
+                        <p>O Nutri-Score é calculado a partir dos dados da tabela de valores nutricionais no verso da embalagem e dos ingredientes (fibras, frutas e vegetais, vegetais secos).
+                           <br>É determinado pela quantidade de nutrientes saudáveis ​​e não saudáveis:
+                           <p><ul><li>Pontos Negativos: Energia, gordura saturada, açúcares e sódio (níveis altos são considerados prejudiciais à saúde).</li>
+                            <li>Pontos positivos: proporção de frutas, vegetais e nozes, óleos de oliva, colza e nozes, fibras e proteínas.</li></ul>
+                            A fórmula detalhada do Nutri-Score está disponível publicamente no site da Saúde Pública da França.
+                           </p>
+                        </p>
+
+                        <h3>Quem criou o Nutri-Score?</h3>
+                        <p>O Nutri-Score foi proposto pela EREN, uma equipe pública francesa de pesquisa em nutrição, liderada pelo professor Serge Hercberg. 
+                           É baseado na pontuação nutricional criada pela Agência de Padrões Alimentares do Reino Unido.
+                           <br>O princípio da rotulagem simplificada na parte frontal das embalagens foi oficialmente apresentado pela primeira vez no relatório de 2013
+                           “Propostas para um novo impulso à política de nutrição da saúde pública francesa no âmbito da Estratégia Nacional de Saúde” (pdf). 
+                           O professor Serge Hercberg defende a adoção de um logotipo com um sistema de notas de A a E, que seria exibido na frente
+                           dos produtos alimentícios para permitir uma fácil comparação da qualidade nutricional dos produtos.</p>
+                </p>
+            </section>
+            
+        </div>
+
+        <div id="resultados"></div>
+    </div>
+
+    <footer>
+        <p><b>FoodHub - Conectando você à comunidade dos alimentos!</b></p>
+        <p><b>© 2025 FoodHub. Todos os direitos reservados.</b></p>
+    </footer>
+
+</body>
+</html>
