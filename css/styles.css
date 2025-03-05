@@ -299,11 +299,11 @@ footer .rodapeFeed {
 
 @media (max-width: 768px) {
   header {
-    font-size: 1.2rem; /* Reduz o tamanho da fonte do header */
+    font-size: 1.3rem; /* Reduz o tamanho da fonte do header */
   }
 
   nav ul {
-    gap: 10px; /* Reduz o gap entre os itens do menu */
+    gap: 40px; /* Reduz o gap entre os itens do menu */
   }
 
   .cabecalho {
@@ -322,9 +322,21 @@ footer .rodapeFeed {
     font-size: 1rem; /* Reduz o tamanho da fonte para dispositivos móveis */
   }
 
+
   input, button {
     width: 100%; /* Ajusta a largura dos inputs e botões */
     max-width: none; /* Remove a largura máxima */
+    justify-content: center;
+    text-align: center;
+  }
+
+  input{ 
+    left: 2.5%;
+  }
+
+  button{
+    right: 1.4%;
+    width: 60%;
   }
 
   .product-card {
