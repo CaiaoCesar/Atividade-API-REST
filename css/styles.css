@@ -343,4 +343,8 @@ footer .rodapeFeed {
     width: 100%; /* Ajusta a largura dos cards para dispositivos móveis */
     max-width: 100%; 
   }
+
+  .product-card .img-produto {
+    max-width: 80%;
+  }
 }
