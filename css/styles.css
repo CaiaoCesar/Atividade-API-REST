@@ -340,7 +340,7 @@ footer .rodapeFeed {
   }
 
   .product-card {
-    width: 100%; /* Ajusta a largura dos cards para dispositivos móveis */
+    width: 80%; /* Ajusta a largura dos cards para dispositivos móveis */
     max-width: none; /* Remove a largura máxima */
   }
 }
