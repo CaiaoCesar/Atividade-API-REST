@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-   
-    const pesquisa = document.querySelector("#pesquisaDado")
+    const pesquisa = document.querySelector("#pesquisaDado");
     const resultados = document.getElementById("resultados");
 
     pesquisa.addEventListener("submit", (event) => {
@@ -8,85 +7,149 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const queryValue = event.target.querySelector("input[name=buscar]").value.trim();
       
-        if (!queryValue){
+        if (!queryValue) {
             alert("Informar um Valor de Busca é Obrigatório."); 
             return;
         }
 
-        //get com axios 
+        // Endpoint oficial da Open Food Facts para busca por nome
+        const apiUrl = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${encodeURIComponent(queryValue)}&search_simple=1&action=process&json=1`;
+
         axios
-            .get(`https://world.openfoodfacts.net/api/v2/product/${queryValue}?fields=product_name,selected_images,nutriscore_data`)
+            .get(apiUrl)
             .then((response) => {
-                if (response.data.status === 0) {
-                    resultados.textContent = "Produto não encontrado!";
+                const products = response.data.products;
+
+                if (products.length === 0) {
+                    resultados.textContent = "Nenhum produto encontrado!";
                 } else {
-                    const product = response.data.product;
-                    const nutriscoreData = product.nutriscore_data;
+                    resultados.innerHTML = ""; // Limpa os resultados anteriores
 
-                    // Verifica se há imagens disponíveis
-                    const imageUrl = product.selected_images?.front?.display?.en || "https://via.placeholder.com/400";
+                    // Itera sobre os produtos encontrados
+                    products.forEach(product => {
+                        const productName = product.product_name || "Nome não disponível";
+                        const imageUrl = product.image_url || "https://via.placeholder.com/400";
+                        const nutriscoreGrade = product.nutriscore_grade ? product.nutriscore_grade.toUpperCase() : "Não disponível";
+                        const productCode = product.code; // Código de barras do produto
 
-                    // Criar o layout HTML personalizado
-                    const productHTML = `
-                        <div class="product-card">
-                            <h2>${product.product_name}</h2>
-
-                            <div class= "img-produto">
-                                <img src="${imageUrl}" alt="${product.product_name}" style="max-width: 100%; height: auto;">
+                        // Criar o layout HTML inicial para cada produto
+                        const productHTML = `
+                            <div class="product-card" data-code="${productCode}">
+                                <h2>${productName}</h2>
+                                <div class="img-produto">
+                                    <img src="${imageUrl}" alt="${productName}" style="max-width: 100%; height: auto;">
+                                </div>
+                                <div class="nutriscore-grade">
+                                    <strong>Nota Nutri-Score:</strong> ${nutriscoreGrade}
+                                </div>
+                                <div class="additional-info" style="display: none;">
+                                    <!-- Informações adicionais serão carregadas aqui -->
+                                </div>
                             </div>
+                        `;
 
-                            <div class="nutriscore-grade">
-                                <strong>Nota Nutri-Score:</strong> ${nutriscoreData.grade.toUpperCase()}
-                            </div>
-                            <div class="nutriscore-details">
-                                <h3>Detalhes Nutricionais:</h3>
-                                <ul>
-                                    <li><strong>Pontos Negativos:</strong> ${nutriscoreData.negative_points} / ${nutriscoreData.negative_points_max}</li>
-                                    <li><strong>Pontos Positivos:</strong> ${nutriscoreData.positive_points} / ${nutriscoreData.positive_points_max}</li>
-                                </ul>
-                                <h4>Componentes Negativos:</h4>
-                                <ul>
-                                    ${nutriscoreData.components.negative.map(comp => `
-                                        <li>
-                                            <strong>${comp.id}:</strong> ${comp.value} ${comp.unit} (Pontos: ${comp.points})
-                                        </li>
-                                    `).join('')}
-                                </ul>
-                                <h4>Componentes Positivos:</h4>
-                                <ul>
-                                    ${nutriscoreData.components.positive.map(comp => `
-                                        <li>
-                                            <strong>${comp.id}:</strong> ${comp.value} ${comp.unit} (Pontos: ${comp.points})
-                                        </li>
-                                    `).join('')}
-                                </ul>
-                            </div>
-                        </div>
-                    `;
+                        // Inserir o HTML personalizado na div de resultados
+                        resultados.innerHTML += productHTML;
+                    });
 
-                    // Inserir o HTML personalizado na div de resultados
-                    resultados.innerHTML = productHTML;
+                    // Adiciona evento de clique para expandir o card
+                    document.querySelectorAll(".product-card").forEach(card => {
+                        card.addEventListener("click", function () {
+                            const code = this.getAttribute("data-code");
+                            const additionalInfo = this.querySelector(".additional-info");
+
+                            // Se já estiver expandido, recolhe
+                            if (additionalInfo.style.display === "block") {
+                                additionalInfo.style.display = "none";
+                            } else {
+                                // Busca informações adicionais do produto
+                                fetchAdditionalProductInfo(code, additionalInfo);
+                            }
+                        });
+                    });
                 }
             })
             .catch((error) => {
                 console.error("Erro ao buscar produto:", error);
-                resultados.textContent = "Produto não encontrado.";
+                resultados.textContent = "Erro ao buscar produtos.";
             });
     });
-   
 
-    // //post com axios 
+    // Função para traduzir texto usando LibreTranslate
+    async function translateText(text, targetLanguage = 'pt') {
+        const apiUrl = 'https://libretranslate.com/translate';
 
-    // const data = null; 
+        try {
+            const response = await axios.post(apiUrl, {
+                q: text,
+                source: 'auto',
+                target: targetLanguage,
+                format: 'text',
+            });
+            return response.data.translatedText;
+        } catch (error) {
+            console.error('Erro ao traduzir:', error);
+            return text; // Retorna o texto original em caso de erro
+        }
+    }
 
-    // axios
-    //     .post("https://world.openfoodfacts.net/cgi/product_jqm2.pl", data)
-    //     .then((response) => {
-    //         alert(JSON.stringify(response.data))
-    //     })
-    //     .catch((error) => {
-    //         console.log(error);
-    //     });
+    // Função para buscar informações adicionais do produto
+    async function fetchAdditionalProductInfo(code, additionalInfo) {
+        const apiUrl = `https://world.openfoodfacts.org/api/v0/product/${code}.json`;
 
+        axios
+            .get(apiUrl)
+            .then(async (response) => {
+                const product = response.data.product;
 
+                if (product) {
+                    // Extrai informações adicionais
+                    const ingredients = product.ingredients_text || "Ingredientes não disponíveis.";
+                    const nutritionTable = product.nutriments || {};
+                    const brand = product.brands || "Marca não disponível";
+                    const country = product.countries || "País de origem não disponível";
+
+                    // Traduz os textos
+                    const ingredientsTranslated = await translateText(ingredients);
+                    const countryTranslated = await translateText(country);
+
+                    // Traduz a tabela nutricional
+                    const nutritionTableTranslated = {};
+                    for (const [key, value] of Object.entries(nutritionTable)) {
+                        const keyTranslated = await translateText(key);
+                        nutritionTableTranslated[keyTranslated] = value;
+                    }
+
+                    // Cria o HTML para as informações adicionais
+                    const additionalInfoHTML = `
+                        <section id="dadosAlimento">
+                            <h3>Informações Adicionais:</h3>
+                            <p><strong>Marca:</strong> ${brand}</p>
+                            <p><strong>País de Origem:</strong> ${countryTranslated}</p>
+                            <h4>Ingredientes:</h4>
+                            <p>${ingredientsTranslated}</p>
+                            <h4>Tabela Nutricional:</h4>
+                        </section>
+                        
+                        <ul id="itensNutricionais">
+                            ${Object.entries(nutritionTableTranslated).map(([key, value]) => `
+                                <li class="nutrItem"><strong>${key}:</strong> ${value}</li>
+                            `).join('')}
+                        </ul>
+                    `;
+
+                    // Insere o HTML no card
+                    additionalInfo.innerHTML = additionalInfoHTML;
+                    additionalInfo.style.display = "block";
+                } else {
+                    additionalInfo.innerHTML = "<p>Não foi possível carregar informações adicionais.</p>";
+                    additionalInfo.style.display = "block";
+                }
+            })
+            .catch((error) => {
+                console.error("Erro ao buscar informações adicionais:", error);
+                additionalInfo.innerHTML = "<p>Erro ao carregar informações adicionais.</p>";
+                additionalInfo.style.display = "block";
+            });
+    }
 });

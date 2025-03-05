@@ -57,11 +57,11 @@ a{
     font-style: normal;
     font-size: 1.5rem;
     height: 8.5rem;
-    margin: 20px;
+    padding: 0px;
     background-image: url("/images/fruits.png");
     border-radius: 10px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: overlay;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
@@ -76,8 +76,13 @@ a{
   font-family: "Racing Sans One", serif;
   font-weight: 400;
   font-style: normal;
-  background-image: url('../images/Background.webp');
+  background-image: url("/images/ImgOkay.webp");
+  background-size: auto;
   border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: overlay;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  margin-top: 20px;
 }
 
 #apresentation{
@@ -95,6 +100,7 @@ a{
 #textApresentation{
   justify-content: center;
   align-self: center;
+  font-size: 1.3rem;
 }
 
 .container{
@@ -103,10 +109,18 @@ a{
   font-style: normal;
   background-image: url('../images/tableFood.png');
   border-radius: 10px;
-  margin: 10px;
+  margin: 20px auto; /* Adiciona espaçamento vertical e centraliza */
+  padding: 0px; /* Adiciona espaçamento interno */
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: overlay;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .paginaFeed{
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
   font-size: 1.3rem;
   background-size: cover;
   background-position: center;
@@ -126,6 +140,7 @@ a{
 #pesquisaDado{
   justify-content: center;
   text-align: center;
+  padding: 40px;
 }
 
 input{
@@ -133,21 +148,49 @@ input{
   width: 18rem;
   text-align: center;
   border-radius: 10px;
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  position: relative;
+  right: 5%;
 }
 
 button{
   height: 3rem;
   width: 8rem;
   border-radius: 15px;
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  position: relative;
+  left: 5%;
 }
 
 #informacoesPesquisa{
   font-family: "Orbitron", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
+  padding: 20px;
   font-style: normal;
   font-size: 1.2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: overlay;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
+
+#informacoesPesquisa p ul li{
+  justify-content: left;
+  text-align: left;
+
+}
+
+#resultados{
+  background-image: url("/images/Background.webp");
+  background-size: auto;
+}
+
 
 #credits{
   position: relative;
@@ -155,10 +198,8 @@ button{
   background-size: cover;
   background-position: center;
   border-radius: 10px;
+  padding: 20px;
   color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  background-blend-mode: overlay;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 #links{
@@ -173,28 +214,35 @@ footer{
   padding: 10px;
 }
 
+footer .rodapeFeed {
+  font-family: "Limelight", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 10px;
+}
 
 .product-card {
-  border: 1px solid white;
+  border: 1px solid #c5b89f;
   border-radius: 8px;
   padding: 16px;
   width: 55%;
   margin: 16px 0;
   background-image: url("/images/fruits.png");
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   background-blend-mode: overlay;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   font-family: "Rubik Dirt", serif;
   font-weight: 400;
   font-style: normal;
+  box-sizing: border-box; /* Garante que o padding não aumente o tamanho do card */
 }
 
 .product-card h2 {
   margin-top: 0;
-  color: #f7f7a1;
+  color: #d1f7ba;
 }
 
-.product-card li{
+.product-card li {
   color: black;
 }
 
@@ -231,5 +279,56 @@ footer{
 
 #rodapeCreditos {
   padding: 10px;
-  margin: 10px;
+
+}
+
+#itensNutricionais .nutrItem{
+  color: #c5b89f;
+}
+
+#dadosAlimento {
+  color: #a69e80;
+}
+
+#dadosAlimento p {
+  overflow-wrap: break-word; /* Quebra palavras longas */
+  word-wrap: break-word; /* Compatibilidade com navegadores mais antigos */
+  white-space: normal; /* Permite a quebra de linha */
+  max-width: 100%; /* Limita a largura ao tamanho do card */
+}
+
+@media (max-width: 768px) {
+  header {
+    font-size: 1.2rem; /* Reduz o tamanho da fonte do header */
+  }
+
+  nav ul {
+    gap: 10px; /* Reduz o gap entre os itens do menu */
+  }
+
+  .cabecalho {
+    font-size: 1rem; /* Reduz o tamanho da fonte do cabeçalho */
+  }
+
+  #textApresentation {
+    font-size: 1rem; /* Reduz o tamanho da fonte do texto de apresentação */
+  }
+
+  .container {
+    padding: 10px; /* Reduz o padding para dispositivos móveis */
+  }
+
+  .paginaFeed {
+    font-size: 1rem; /* Reduz o tamanho da fonte para dispositivos móveis */
+  }
+
+  input, button {
+    width: 100%; /* Ajusta a largura dos inputs e botões */
+    max-width: none; /* Remove a largura máxima */
+  }
+
+  .product-card {
+    width: 100%; /* Ajusta a largura dos cards para dispositivos móveis */
+    max-width: none; /* Remove a largura máxima */
+  }
 }
