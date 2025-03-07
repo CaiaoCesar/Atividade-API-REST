@@ -109,8 +109,8 @@ a{
   font-style: normal;
   background-image: url('../images/tableFood.png');
   border-radius: 10px;
-  margin: 20px auto; /* Adiciona espaçamento vertical e centraliza */
-  padding: 0px; /* Adiciona espaçamento interno */
+  margin: 20px auto;
+  padding: 0px; 
   background-color: rgba(0, 0, 0, 0.5);
   background-blend-mode: overlay;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -186,6 +186,17 @@ button{
 
 }
 
+.adicionarItem{
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: 3rem;
+  width: 8rem;
+  position: relative;
+  margin-left: 70%;
+  margin-top: 10%;
+}
+
 #resultados{
   background-image: url("/images/Background.webp");
   background-size: auto;
@@ -234,7 +245,7 @@ footer .rodapeFeed {
   font-family: "Rubik Dirt", serif;
   font-weight: 400;
   font-style: normal;
-  box-sizing: border-box; /* Garante que o padding não aumente o tamanho do card */
+  box-sizing: border-box; 
 }
 
 .product-card h2 {
@@ -276,6 +287,19 @@ footer .rodapeFeed {
   border-radius: 4px;
 }
 
+.verDados {
+  background-color: #1e8c93;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.verDados:hover {
+  background-color: darkblue;
+}
 
 #rodapeCreditos {
   padding: 10px;
@@ -294,38 +318,39 @@ footer .rodapeFeed {
   overflow-wrap: break-word; /* Quebra palavras longas */
   word-wrap: break-word; /* Compatibilidade com navegadores mais antigos */
   white-space: normal; /* Permite a quebra de linha */
-  max-width: 100%; /* Limita a largura ao tamanho do card */
+  max-width: 100%; 
 }
+
 
 @media (max-width: 768px) {
   header {
-    font-size: 1.3rem; /* Reduz o tamanho da fonte do header */
+    font-size: 1.3rem; 
   }
 
   nav ul {
-    gap: 40px; /* Reduz o gap entre os itens do menu */
+    gap: 40px; 
   }
 
   .cabecalho {
-    font-size: 1rem; /* Reduz o tamanho da fonte do cabeçalho */
+    font-size: 1rem; 
   }
 
   #textApresentation {
-    font-size: 1rem; /* Reduz o tamanho da fonte do texto de apresentação */
+    font-size: 1rem;
   }
 
   .container {
-    padding: 10px; /* Reduz o padding para dispositivos móveis */
+    padding: 10px; 
   }
 
   .paginaFeed {
-    font-size: 1rem; /* Reduz o tamanho da fonte para dispositivos móveis */
+    font-size: 1rem;
   }
 
 
   input, button {
-    width: 100%; /* Ajusta a largura dos inputs e botões */
-    max-width: none; /* Remove a largura máxima */
+    width: 100%; 
+    max-width: none; 
     justify-content: center;
     text-align: center;
   }
@@ -340,7 +365,7 @@ footer .rodapeFeed {
   }
 
   .product-card {
-    width: 100%; /* Ajusta a largura dos cards para dispositivos móveis */
+    width: 100%;
     max-width: 100%; 
   }
 

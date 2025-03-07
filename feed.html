@@ -45,10 +45,24 @@
                 <button type="submit">Pesquisar 🔍</button>
             </form>
 
+            <div class="adicionarItem">
+                <h3>Cadastrar Produto 🛍🛒</h3>
+                <form id="formAdicionarProduto">
+                    <input type="text" name="nome" placeholder="Nome do Produto" required>
+                    <input type="text" name="marca" placeholder="Marca" required>
+                    <input type="text" name="ingredientes" placeholder="Ingredientes" required>
+                    <input type="text" name="pais" placeholder="País de Origem" required>
+                    <input type="text" name="nutriscore" placeholder="Nota Nutri-Score (A-E)" required>
+                    <input type="url" name="imagem" placeholder="URL da Imagem" required>
+                    <button type="submit">Adicionar Produto 💡</button>
+                </form>
+            </div>
+
             <div id="resultados"></div>
 
             <section id="informacoesPesquisa">
                 <p>
+                    <h2><p>Aguarde um instante enquanto os dados estão sendo buscados... </p><br></h2>
                     <h2>Compare a qualidade nutricional dos produtos alimentícios com o Nutri-Score!</h2>
 
                         <h3>O que é Nutri-Score?</h3>
@@ -72,6 +86,10 @@
                 </p>
             </section>
             
+            
+
+          
+
         </div>
 
         
