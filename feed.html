@@ -45,16 +45,19 @@
                 <button type="submit">Pesquisar 🔍</button>
             </form>
 
-            <div class="adicionarItem">
-                <h3>Cadastrar Produto 🛍🛒</h3>
-                <form id="formAdicionarProduto">
+            <div class="adicionarItem">  
+                <button id="botaoCadastro">Cadastrar Produto 🛍🛒</button> 
+
+                <h3 id="mensagemCadastro">Aqui Você pode fazer sua Solicitação para Cadastrar um novo Item, e então estará sob análise para ser adicionado: 📌</h3>
+
+                <form id="formAdicionarProduto" style="display: none;">
                     <input type="text" name="nome" placeholder="Nome do Produto" required>
                     <input type="text" name="marca" placeholder="Marca" required>
                     <input type="text" name="ingredientes" placeholder="Ingredientes" required>
                     <input type="text" name="pais" placeholder="País de Origem" required>
                     <input type="text" name="nutriscore" placeholder="Nota Nutri-Score (A-E)" required>
                     <input type="url" name="imagem" placeholder="URL da Imagem" required>
-                    <button type="submit">Adicionar Produto 💡</button>
+                    <button id="adicionarProduto" type="submit">Adicionar Produto 💡</button>
                 </form>
             </div>
 

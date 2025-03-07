@@ -183,18 +183,43 @@ button{
 #informacoesPesquisa p ul li{
   justify-content: left;
   text-align: left;
-
 }
 
-.adicionarItem{
-  justify-content: center;
-  align-items: center;
+.adicionarItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  text-align: center; 
   padding: 20px;
-  height: 3rem;
-  width: 8rem;
-  position: relative;
-  margin-left: 70%;
-  margin-top: 10%;
+}
+
+#botaoCadastro {
+  width: 300px; 
+  margin: 10px 0;
+  padding: 10px; 
+  font-size: 1rem; 
+  border-radius: 15px; 
+  background-color: #23615b; 
+  color: white;
+  border: none; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+}
+
+#botaoCadastro:hover {
+  background-color: rgb(40, 156, 93);
+}
+
+#mensagemCadastro {
+  margin-top: 10px; 
+  font-size: 1rem; 
+  color: white;
+}
+
+#adicionarProduto{
+  margin-top: 30px;
+  width: 200px;
 }
 
 #resultados{
@@ -362,6 +387,13 @@ footer .rodapeFeed {
   button{
     right: 1.4%;
     width: 60%;
+  }
+
+  #formAdicionarProduto{
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    right: 4%;
   }
 
   .product-card {

@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Funções para a busca de produtos
     const pesquisa = document.querySelector("#pesquisaDado");
     const resultados = document.getElementById("resultados");
 
@@ -132,60 +133,78 @@ document.addEventListener("DOMContentLoaded", function () {
                 additionalInfo.style.display = "block";
             });
     }
-});
 
-document.addEventListener("DOMContentLoaded", function () {
-    const formAdicionarProduto = document.querySelector("#formAdicionarProduto");
+    // Funções para o cadastro de produtos
+    const botaoCadastro = document.getElementById("botaoCadastro");
+    const formAdicionarProduto = document.getElementById("formAdicionarProduto");
+    const mensagemCadastro = document.getElementById("mensagemCadastro");
 
-    formAdicionarProduto.addEventListener("submit", async (event) => {
-        event.preventDefault();
+    if (botaoCadastro && formAdicionarProduto && mensagemCadastro) {
+        botaoCadastro.addEventListener("click", function (event) {
+            event.preventDefault();
 
-        // Coletar os dados do formulário
-        const formData = new FormData(formAdicionarProduto);
-        const produto = {
-            code: Math.random().toString(36).substring(7), // Código de barras fictício
-            product_name: formData.get("nome"),
-            brands: formData.get("marca"),
-            ingredients_text: formData.get("ingredientes"),
-            countries: formData.get("pais"),
-            nutriscore_grade: formData.get("nutriscore"),
-            image_url: formData.get("imagem"),
-        };
-
-        // Validar os dados
-        if (!produto.product_name || !produto.brands || !produto.ingredients_text || !produto.countries || !produto.nutriscore_grade || !produto.image_url) {
-            alert("Todos os campos são obrigatórios!");
-            return;
-        }
-
-        // Criar um novo FormData para enviar os dados no formato multipart/form-data
-        const data = new FormData();
-        data.append("code", produto.code);
-        data.append("product_name", produto.product_name);
-        data.append("brands", produto.brands);
-        data.append("ingredients_text", produto.ingredients_text);
-        data.append("countries", produto.countries);
-        data.append("nutriscore_grade", produto.nutriscore_grade);
-        data.append("image_url", produto.image_url);
-
-        // Enviar os dados para a API do Open Food Facts
-        try {
-            const response = await axios.post("https://world.openfoodfacts.org/cgi/product_jqm2.pl", data, {
-                headers: {
-                    "Content-Type": "multipart/form-data", // Formato aceito pela API
-                },
-            });
-
-            if (response.data.status === 1) {
-                alert("Produto cadastrado com sucesso!");
-                formAdicionarProduto.reset(); 
+            // Alterna a visibilidade do formulário e do botão
+            if (formAdicionarProduto.style.display === "none") {
+                formAdicionarProduto.style.display = "block";
+                mensagemCadastro.style.display = "block";
+                botaoCadastro.textContent = "Fechar Cadastro 🔒";
             } else {
-                alert("Erro ao cadastrar o produto. Tente novamente.");
-                console.error("Resposta da API:", response.data);
+                formAdicionarProduto.style.display = "none";
+                mensagemCadastro.style.display = "none";
+                botaoCadastro.textContent = "Cadastrar Produto 🛍🛒";
             }
-        } catch (error) {
-            console.error("Erro ao cadastrar produto:", error);
-            alert("Erro ao cadastrar o produto. Verifique o console para mais detalhes.");
-        }
-    });
+        });
+
+        formAdicionarProduto.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            // Coletar os dados do formulário
+            const formData = new FormData(formAdicionarProduto);
+            const produto = {
+                code: Math.random().toString(36).substring(7), // Código de barras fictício
+                product_name: formData.get("nome"),
+                brands: formData.get("marca"),
+                ingredients_text: formData.get("ingredientes"),
+                countries: formData.get("pais"),
+                nutriscore_grade: formData.get("nutriscore"),
+                image_url: formData.get("imagem"),
+            };
+
+            // Validar os dados
+            if (!produto.product_name || !produto.brands || !produto.ingredients_text || !produto.countries || !produto.nutriscore_grade || !produto.image_url) {
+                alert("Todos os campos são obrigatórios!");
+                return;
+            }
+
+            // Criar um novo FormData para enviar os dados no formato multipart/form-data
+            const data = new FormData();
+            data.append("code", produto.code);
+            data.append("product_name", produto.product_name);
+            data.append("brands", produto.brands);
+            data.append("ingredients_text", produto.ingredients_text);
+            data.append("countries", produto.countries);
+            data.append("nutriscore_grade", produto.nutriscore_grade);
+            data.append("image_url", produto.image_url);
+
+            // Enviar os dados para a API do Open Food Facts
+            try {
+                const response = await axios.post("https://world.openfoodfacts.org/cgi/product_jqm2.pl", data, {
+                    headers: {
+                        "Content-Type": "multipart/form-data", // Formato aceito pela API
+                    },
+                });
+
+                if (response.data.status === 1) {
+                    alert("Produto cadastrado com sucesso, mas só será armazenado ao passar na verificação da Open Food!");
+                    formAdicionarProduto.reset(); 
+                } else {
+                    alert("Erro ao cadastrar o produto. Tente novamente.");
+                    console.error("Resposta da API:", response.data);
+                }
+            } catch (error) {
+                console.error("Erro ao cadastrar produto:", error);
+                alert("Erro ao cadastrar o produto. Verifique o console para mais detalhes.");
+            }
+        });
+    }
 });
