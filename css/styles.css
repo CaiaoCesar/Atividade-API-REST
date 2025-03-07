@@ -413,6 +413,6 @@ footer .rodapeFeed {
 
   .product-card .img-produto {
     max-width: 80%;
-    max-height: 40%;
+    height: 40%;
   }
 }
