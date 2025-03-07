@@ -390,6 +390,10 @@ footer .rodapeFeed {
     left: 2.5%;
   }
 
+  #botaoPesquisa{
+    margin-top: 10px;
+  }
+
   button{
     right: 1.4%;
     width: 60%;
@@ -409,5 +413,6 @@ footer .rodapeFeed {
 
   .product-card .img-produto {
     max-width: 80%;
+    max-height: 40%;
   }
 }
