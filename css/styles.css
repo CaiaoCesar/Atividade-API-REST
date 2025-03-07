@@ -362,6 +362,18 @@ footer .rodapeFeed {
     gap: 40px; 
   }
 
+  nav ul li a:hover {
+    color: orangered;
+  }
+  
+  nav ul li a:active {
+    color: yellow;
+  }
+  
+  a{
+    color:dodgerblue;
+  }
+
   .cabecalho {
     font-size: 1rem; 
   }
@@ -409,6 +421,10 @@ footer .rodapeFeed {
   .product-card {
     width: 100%;
     max-width: 100%; 
+  }
+
+  .verDados:hover {
+    background-color: darkblue;
   }
 
   .product-card .img-produto {
